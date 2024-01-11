@@ -23,7 +23,6 @@
     * policyId(想要出險的保險單ID)
     * claimAmount(想要拿的金額，但這邊不得高於合約內的現有金額)
 
-:::info
 這邊我有加入以下程式碼讓合約可以收外來的 ether，因為這樣要測試出險的時候，合約內才有夠錢可以用(先自己手動匯一些給合約用)
 ```solidity=
 receive() external payable {
@@ -31,5 +30,3 @@ receive() external payable {
 }
 
 ```
-
-:::
