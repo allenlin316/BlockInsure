@@ -18,7 +18,7 @@ $(document).ready(function(){
         $(".user-info").eq(0).text(coinbase)
         $(".user-info").eq(1).text(`${web3.utils.fromWei(balance)} ETH`)
 
-        var contract_address = "0xB8942aba02d94ED7c0eA05F5ac305FEbb1965791";
+        var contract_address = "0x13944fe84adC22cc729374d88e4412eFAeafab71";
         var contract_abi = [
             {
                 "inputs": [],
@@ -294,20 +294,39 @@ $(document).ready(function(){
         });
     })
 
-    $("#processPremiumPayment").click(function(){
+    $("#processPremiumPayment").click( async function(){
         policyid = $("#processSelect :selected").text();
         insurancePay = $("#insurancePay").val();
-        myContract.methods.processPremiumPayment(policyid).send({from: coinbase, value: insurancePay}).then(function(receipt){
-            location.reload();
-        });
+        policy = await myContract.methods.policies(policyid).call();
+        insurance_require_premium = policy[2];
+        if(insurance_require_premium != insurancePay){ // 判斷保險費是否等於當初投保的金額
+            console.log(`錢應該要等於 ${insurance_require_premium}`);
+            //alert(`錢應該要等於 ${insurance_require_premium}`);
+            $(".modal-body").text(`錢應該要等於 ${insurance_require_premium}`); 
+            $("#test").click();
+        } else{
+            myContract.methods.processPremiumPayment(policyid).send({from: coinbase, value: insurancePay}).then(function(receipt){
+                location.reload();
+            });
+        }
     })
 
-    $("#fileClaim").click(function(){
+    $("#fileClaim").click(async function(){
         policyid = $("#fileClaimSelect :selected").text();
         claimAmount = $("#claimAmount").val();
-        myContract.methods.fileClaim(policyid, claimAmount).send({from: coinbase,}).then(function(receipt){
-            location.reload();
-        });
+        curOwner = await web3.eth.getCoinbase();
+        policy = await myContract.methods.policies(policyid).call();
+        policyOwner = policy[1].toLowerCase();
+        console.log(`curOwner:${curOwner}, policyOwner:${policyOwner}`);
+        if(policyOwner != curOwner){ // 如果不是本人出險 (保單擁有者 != 網站目前使用者)
+           // alert(`你不是此保單擁有者`);
+           $(".modal-body").text("你不是此保單擁有者"); 
+           $("#test").click();
+        } else{
+            myContract.methods.fileClaim(policyid, claimAmount).send({from: coinbase,}).then(function(receipt){
+                location.reload();
+            });
+        }
     })
 
     $("#floatingSelect").change(async function(){
