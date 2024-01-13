@@ -1,9 +1,12 @@
-# BlockInsure (保鏈安全)
+# [BlockInsure (保鏈安全)](https://allenlin316.github.io/BlockInsure/)
 
 * 利用區塊鏈技術實現智能合約，實現自動投保以及理賠流程。透過不可變的區塊鏈數據，提高透明度和數據安全性，簡化保險業務，加速賠償流程。
-* 此系統是建置在測試網上(Sepolia Testnet)
+* 此系統是建置在測試網上(Sepolia Testnet)，很安全也不用真錢就可以體驗
     * Contract Address: `0x51A44c8158C3501dA8f3f56aA86923f0C04aAA42`
-* 歡迎試玩系統，開啟自己 MetaMask(Show test networks > Sepolia)
+* 歡迎試玩系統(目前只支援電腦版需要有 MetaMask 插件在網頁上)
+    * 開啟自己 MetaMask (Show test networks > Sepolia 開啟)，沒測試幣可以去[這裡拿](https://www.infura.io/faucet/sepolia)
+    * 連線到本網站 (打開插件後 > 已連結的網站 > 手動連結到目前的網站)
+    * 重整頁面，右邊就會出現你自己的錢包跟現有的錢
 
 ## 智能合約各項函式介紹
 * policyCounter: 目前有幾個保險單
