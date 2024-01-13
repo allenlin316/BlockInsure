@@ -18,7 +18,7 @@ $(document).ready(function(){
         $(".user-info").eq(0).text(coinbase)
         $(".user-info").eq(1).text(`${web3.utils.fromWei(balance)} ETH`)
 
-        var contract_address = "0x13df0790aD7A9A3242F8E4b1b950331BB56f6098";
+        var contract_address = "0x51A44c8158C3501dA8f3f56aA86923f0C04aAA42";
         var contract_abi = [
             {
                 "inputs": [],
