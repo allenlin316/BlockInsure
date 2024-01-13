@@ -1,5 +1,10 @@
 # BlockInsure (保鏈安全)
 
+* 利用區塊鏈技術實現智能合約，實現自動投保以及理賠流程。透過不可變的區塊鏈數據，提高透明度和數據安全性，簡化保險業務，加速賠償流程。
+* 此系統是建置在測試網上(Sepolia Testnet)
+    * Contract Address: `0x51A44c8158C3501dA8f3f56aA86923f0C04aAA42`
+* 歡迎試玩系統，開啟自己 MetaMask(Show test networks > Sepolia)
+
 ## 智能合約各項函式介紹
 * policyCounter: 目前有幾個保險單
 * policies: 輸入想看的ID，查看保險單的各項屬性
@@ -22,11 +27,3 @@
 * fileClaim(出險)
     * policyId(想要出險的保險單ID)
     * claimAmount(想要拿的金額，但這邊不得高於合約內的現有金額)
-
-這邊我有加入以下程式碼讓合約可以收外來的 ether，因為這樣要測試出險的時候，合約內才有夠錢可以用(先自己手動匯一些給合約用)
-```solidity=
-receive() external payable {
-    // Handle the incoming Ether
-}
-
-```
