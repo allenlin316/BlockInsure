@@ -4,6 +4,7 @@
 * 此系統是建置在測試網上(Sepolia Testnet)，很安全也不用真錢就可以體驗
     * Contract Address: `0x51A44c8158C3501dA8f3f56aA86923f0C04aAA42`
     * 可以將本 repo 下載下來進 vscode 開啟 live server 並連接自己的 MetaMask 即可以使用
+    * 也可以進入[網站中](https://allenlin316.github.io/BlockInsure/)再連結自己的 MetaMask 插件即可以使用
 
 ## 智能合約各項函式介紹
 * policyCounter: 目前有幾個保險單
